@@ -1,0 +1,20 @@
+name: Notify A when code changes
+
+on:
+  push:
+    branches:
+      - main  # 设置触发条件，这里假设使用主分支
+
+jobs:
+  build-and-notify:
+    runs-on: ubuntu-latest  # 设置运行环境，这里假设使用Ubuntu
+
+    steps:
+
+      - name: Notify A
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.PAT }}  # A仓库的访问令牌
+          repository: chudongvip/main-docs  # A仓库的所有者和名称
+          event-type: update-and-build  # 自定义事件类型，用于A仓库的workflow识别
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
