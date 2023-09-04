@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest  # 设置运行环境，这里假设使用Ubuntu
 
     steps:
-
+      - run: echo ${{ github.sha }}
+      - run: echo ${{ github.ref }}
       - name: Notify A
         uses: peter-evans/repository-dispatch@v2
         with:
