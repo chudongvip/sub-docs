@@ -17,4 +17,4 @@ jobs:
           token: ${{ secrets.PAT }}  # A仓库的访问令牌
           repository: chudongvip/main-docs  # A仓库的所有者和名称
           event-type: update-and-build  # 自定义事件类型，用于A仓库的workflow识别
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repository": "${{ github.repository }}"}'
